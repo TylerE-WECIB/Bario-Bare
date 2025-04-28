@@ -37,7 +37,7 @@ func setup() -> void: # responsible for setting timeLimit and starting the timer
 
 func _on_game_timer_timeout() -> void:
 	print("======== _on_game_timer_timeout() ========")
-	print("timeout ", gameTimer.get_wait_time())
+	print("Duration in seconds: ", gameTimer.get_wait_time())
 	print("winConditionMet: ", winConditionMet)
 	
 	print()
