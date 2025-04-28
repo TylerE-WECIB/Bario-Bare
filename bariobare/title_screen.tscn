@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu0exv5gxie5x"]
+
+[ext_resource type="Texture2D" uid="uid://vdkafaku7yoy" path="res://Art/gen_checkerboard-1.png" id="1_v6p8y"]
+
+[node name="title_screen" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_v6p8y")
