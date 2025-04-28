@@ -578,7 +578,7 @@ process_mode = 3
 position = Vector2(107, 101)
 scale = Vector2(0.40047, 0.40047)
 sprite_frames = SubResource("SpriteFrames_ak2if")
-frame_progress = 0.708797
+frame_progress = 0.0389453
 speed_scale = 0.8
 offset = Vector2(57.4325, 92.3914)
 
@@ -653,8 +653,10 @@ texture = ExtResource("15_aav61")
 
 [node name="Control" type="Control" parent="TitleBox"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 17.0
+offset_top = 31.0
+offset_right = 364.0
+offset_bottom = 404.0
 
 [node name="BarioPlay" type="Sprite2D" parent="TitleBox/Control"]
 position = Vector2(228.155, 182.223)
