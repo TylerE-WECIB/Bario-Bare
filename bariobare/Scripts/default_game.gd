@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var gameTimer = $GameTimer;
-var timeLimit; # default is 30, may get smaller as difficulty increases
+var timeLimit; # passed into gameTimer.set_wait_time()
 var defaultTimeLimit = 30; # level dependent
 var minTimeLimit = 10; # level dependent
 var timeLimitStep = 3; # how much time limit is decreased by based on difficulty, level dependent
@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 func _on_game_timer_timeout() -> void:
 	print("timeout ", gameTimer.get_wait_time());
 
-func setTimeLimit(): # modifies time limit based on difficulty
+func setTimeLimit(): # sets the time limit based on difficulty
 	print("======== setTimeLimit() ========");
 	
 	var difficulty = Global.difficulty;
