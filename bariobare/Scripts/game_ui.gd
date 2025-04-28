@@ -14,3 +14,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		$Bomb.frame = 0
 		$Bomb/Label.visible = true
+
+func _on_microgame_start():
+	pass
