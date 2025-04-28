@@ -1,14 +1,14 @@
 extends Node2D
 
 @onready var gameTimer = $GameTimer;
-var timeLimit = 30
+var timeLimit = 5;
 
 func _ready() -> void:
-	pass
+	gameTimer.set_wait_time(timeLimit);
 
 func _process(delta: float) -> void:
 	pass
 
 
 func _on_game_timer_timeout() -> void:
-	print("timeout ", gameTimer.get_time_left())
+	print("timeout ", gameTimer.get_wait_time());
