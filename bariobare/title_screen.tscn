@@ -1,10 +1,153 @@
-[gd_scene load_steps=2 format=3 uid="uid://bu0exv5gxie5x"]
+[gd_scene load_steps=20 format=3 uid="uid://bu0exv5gxie5x"]
 
-[ext_resource type="Texture2D" uid="uid://vdkafaku7yoy" path="res://Art/gen_checkerboard-1.png" id="1_v6p8y"]
+[ext_resource type="Shader" uid="uid://ba0qwlsp4mx3j" path="res://scroll.gdshader" id="1_ak2if"]
+[ext_resource type="Texture2D" uid="uid://bokiuu64spy64" path="res://Art/checker.png" id="1_v6p8y"]
+[ext_resource type="Texture2D" uid="uid://ctv7hui58un2c" path="res://Art/big b (1).png" id="3_ig5kc"]
+[ext_resource type="Texture2D" uid="uid://cyvouvj4cucrk" path="res://Art/big b (2).png" id="4_05l2w"]
+[ext_resource type="Texture2D" uid="uid://cbp8oi2ibids6" path="res://Art/big b (3).png" id="5_tpml5"]
+[ext_resource type="Texture2D" uid="uid://d1tmbehw1nnh0" path="res://Art/big b (4).png" id="6_jqemp"]
 
-[node name="title_screen" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ig5kc"]
+shader = ExtResource("1_ak2if")
+shader_parameter/speed = 0.1
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_05l2w"]
+atlas = ExtResource("3_ig5kc")
+region = Rect2(0, 0, 638, 679)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hafda"]
+atlas = ExtResource("3_ig5kc")
+region = Rect2(0, 679, 638, 679)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ak2if"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05l2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hafda")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpml5"]
+atlas = ExtResource("4_05l2w")
+region = Rect2(0, 0, 638, 679)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqemp"]
+atlas = ExtResource("4_05l2w")
+region = Rect2(0, 679, 638, 679)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_013yr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpml5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqemp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_013yr"]
+atlas = ExtResource("5_tpml5")
+region = Rect2(0, 0, 638, 679)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vmu4"]
+atlas = ExtResource("5_tpml5")
+region = Rect2(0, 679, 638, 679)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8vmu4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_013yr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vmu4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfn3p"]
+atlas = ExtResource("6_jqemp")
+region = Rect2(0, 0, 638, 679)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhgbh"]
+atlas = ExtResource("6_jqemp")
+region = Rect2(0, 679, 638, 679)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfn3p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfn3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhgbh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ig5kc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_v6p8y")
+
+[node name="BigB1" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+position = Vector2(130, 138)
+scale = Vector2(0.40047, 0.40047)
+sprite_frames = SubResource("SpriteFrames_ak2if")
+frame_progress = 0.317988
+speed_scale = 0.8
+
+[node name="BigB2" type="AnimatedSprite2D" parent="."]
+position = Vector2(1167, 124)
+scale = Vector2(0.344044, 0.344044)
+sprite_frames = SubResource("SpriteFrames_013yr")
+frame_progress = 0.870486
+
+[node name="BigB3" type="AnimatedSprite2D" parent="."]
+position = Vector2(1158, 590)
+scale = Vector2(0.476489, 0.476489)
+sprite_frames = SubResource("SpriteFrames_8vmu4")
+frame_progress = 0.61923
+
+[node name="BigB4" type="AnimatedSprite2D" parent="."]
+position = Vector2(117, 580)
+scale = Vector2(0.387147, 0.387147)
+sprite_frames = SubResource("SpriteFrames_xfn3p")
+frame_progress = 0.913288
