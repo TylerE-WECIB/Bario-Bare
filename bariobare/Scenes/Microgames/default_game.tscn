@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://csi00kob1hwxr"]
+
+[node name="DefaultGame" type="Node2D"]
