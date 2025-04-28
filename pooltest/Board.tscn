@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://i4a2okr1mk5j"]
+
+[ext_resource type="Texture2D" uid="uid://b78h8u5mdtlt8" path="res://assets/background.jpg" id="1_nd4as"]
+
+[node name="Board" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(575.893, 323.5)
+scale = Vector2(3.83929, 3.83929)
+texture = ExtResource("1_nd4as")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+visible = false
+position = Vector2(575.893, 323.5)
+scale = Vector2(3.83929, 3.83929)
+polygon = PackedVector2Array(-118.744, -65.7674, -126.298, -73.0605, -126.819, -83.7395, 1.85117, -84, -8.56744, -78.5302, -12.9953, -65.2465)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="RigidBody2D"]
+visible = false
+polygon = PackedVector2Array(585, -2, 1061, -1, 1061, 53, 1033, 74, 635, 75, 613, 35)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="RigidBody2D"]
+visible = false
+polygon = PackedVector2Array(-1, 69, 0, 562, 35, 562, 62, 526, 67, 138, 36, 88)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="RigidBody2D"]
+visible = false
+polygon = PackedVector2Array(80, 608, 117, 570, 523, 573, 535, 602, 558, 633, 575, 637, 575, 646, 71, 646)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="RigidBody2D"]
+visible = false
+polygon = PackedVector2Array(627, 570, 613, 620, 579, 637, 579, 649, 1081, 648, 1069, 612, 1033, 576)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="RigidBody2D"]
+visible = false
+polygon = PackedVector2Array(1113, 564, 1081, 530, 1082, 135, 1128, 74, 1153, 74, 1150, 580)

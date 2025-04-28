@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dldh4x2mdy0ky"]
+
+[ext_resource type="Texture2D" uid="uid://xt84hnb8uhyn" path="res://assets/player/1.png" id="1_n7ghd"]
+[ext_resource type="Script" uid="uid://20m0l0ag0nom" path="res://player.gd" id="1_nvl01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbfsw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5tmop"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n7ghd")
+}],
+"loop": false,
+"name": &"charge",
+"speed": 5.0
+}]
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_nvl01")
+
+[node name="cueTip" type="CollisionShape2D" parent="."]
+position = Vector2(446, 293)
+scale = Vector2(0.8625, 0.8625)
+shape = SubResource("CircleShape2D_pbfsw")
+
+[node name="cue" type="AnimatedSprite2D" parent="cueTip"]
+position = Vector2(1.1593, -3.05176e-05)
+sprite_frames = SubResource("SpriteFrames_5tmop")
+animation = &"charge"
+offset = Vector2(-455.652, 267.246)
