@@ -1,11 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://bu0exv5gxie5x"]
+[gd_scene load_steps=26 format=3 uid="uid://bu0exv5gxie5x"]
 
+[ext_resource type="Script" uid="uid://cua3in37hs4di" path="res://title_screen.gd" id="1_8vmu4"]
 [ext_resource type="Shader" uid="uid://ba0qwlsp4mx3j" path="res://scroll.gdshader" id="1_ak2if"]
 [ext_resource type="Texture2D" uid="uid://bokiuu64spy64" path="res://Art/checker.png" id="1_v6p8y"]
 [ext_resource type="Texture2D" uid="uid://ctv7hui58un2c" path="res://Art/big b (1).png" id="3_ig5kc"]
 [ext_resource type="Texture2D" uid="uid://cyvouvj4cucrk" path="res://Art/big b (2).png" id="4_05l2w"]
 [ext_resource type="Texture2D" uid="uid://cbp8oi2ibids6" path="res://Art/big b (3).png" id="5_tpml5"]
 [ext_resource type="Texture2D" uid="uid://d1tmbehw1nnh0" path="res://Art/big b (4).png" id="6_jqemp"]
+[ext_resource type="Script" uid="uid://es7mbvejcfjn" path="res://animation_player.gd" id="7_013yr"]
+[ext_resource type="FontFile" uid="uid://cq7buil1aq8m" path="res://Fonts/warioware-inc.ttf" id="7_jqemp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ig5kc"]
 shader = ExtResource("1_ak2if")
@@ -99,6 +102,44 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_tpml5"]
+resource_name = "Title"
+length = 3.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.4, 0.8, 1.2, 1.6, 2, 2.4, 2.8, 3.2, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.870191, 0.14803, 0.0620957, 1), Color(0.968264, 0.567266, 0.446899, 1), Color(0.824548, 0.658351, 0.435476, 1), Color(0.654747, 0.733286, 0.385564, 1), Color(0.32674, 0.788015, 0.621163, 1), Color(0.260955, 0.766138, 0.845959, 1), Color(0.611448, 0.668657, 0.961916, 1), Color(0.773964, 0.61763, 0.879006, 1), Color(0.97082, 0.473664, 0.897721, 1), Color(0.870588, 0.14902, 0.0627451, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jqemp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_013yr"]
+_data = {
+&"RESET": SubResource("Animation_jqemp"),
+&"Title": SubResource("Animation_tpml5")
+}
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -106,6 +147,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8vmu4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -151,3 +193,20 @@ position = Vector2(117, 580)
 scale = Vector2(0.387147, 0.387147)
 sprite_frames = SubResource("SpriteFrames_xfn3p")
 frame_progress = 0.913288
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_013yr")
+}
+script = ExtResource("7_013yr")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 402.0
+offset_top = 264.0
+offset_right = 990.0
+offset_bottom = 404.0
+theme_override_fonts/font = ExtResource("7_jqemp")
+theme_override_font_sizes/font_size = 106
+text = "Wario-Ware"
