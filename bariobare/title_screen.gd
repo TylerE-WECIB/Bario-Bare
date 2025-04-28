@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready():
-	$BigB1.play()
-	$BigB2.play()
-	$BigB3.play()
-	$BigB4.play()
+	$BigBs/BigB1.play()
+	$BigBs/BigB2.play()
+	$BigBs/BigB3.play()
+	$BigBs/BigB4.play()
