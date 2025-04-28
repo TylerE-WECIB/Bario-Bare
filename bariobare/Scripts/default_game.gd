@@ -1,9 +1,10 @@
 extends Node2D
 
 @onready var gameTimer = $GameTimer;
-var defaultTimeLimit = 30; # level dependent
-var minTimeLimit = 10; # level dependent
-var timeLimitStep = 3; # how much time limit is decreased by based on difficulty, level dependent
+
+var defaultTimeLimit; # level dependent
+var minTimeLimit; # level dependent
+var timeLimitStep; # how much time limit is decreased by based on difficulty, level dependent
 var winConditionMet = false;
 
 signal winGame
