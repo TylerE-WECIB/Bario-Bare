@@ -1,5 +1,12 @@
 extends Node
 
+# Global variables
+var difficulty = 0.0
+var lives = 3
+var maxLives = 4 # may remove/not implement
+var numWins = 0
+var highscore = 0
+
 #list of microgames. will read from microgame folder
 var microgame_list := []
 
@@ -11,6 +18,3 @@ func _ready() -> void:
 	
 	#debug line to read all of the microgames in the folder
 	#print(microgame_list)
-# Global variables
-var difficulty = 0.0
-#comment to ensure the branch works properly
