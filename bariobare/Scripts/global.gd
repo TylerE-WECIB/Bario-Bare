@@ -13,3 +13,4 @@ func _ready() -> void:
 	#print(microgame_list)
 # Global variables
 var difficulty = 0.0
+#comment to ensure the branch works properly
