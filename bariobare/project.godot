@@ -14,6 +14,12 @@ config/name="BarioBare"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://Art/icon.svg"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
