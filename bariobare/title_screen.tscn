@@ -138,7 +138,7 @@ speed_scale = 0.8
 position = Vector2(1167, 124)
 scale = Vector2(0.344044, 0.344044)
 sprite_frames = SubResource("SpriteFrames_013yr")
-frame_progress = 0.620421
+frame_progress = 0.870486
 
 [node name="BigB3" type="AnimatedSprite2D" parent="."]
 position = Vector2(1158, 590)
