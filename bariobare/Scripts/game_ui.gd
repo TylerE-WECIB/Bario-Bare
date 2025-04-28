@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var current_game = load(Global.current_game)
 func _ready() -> void:
 	$AnimationPlayer.play("fuse_test")
 
@@ -16,4 +17,6 @@ func _physics_process(delta: float) -> void:
 		$Bomb/Label.visible = true
 
 func _on_microgame_start():
-	pass
+	current_game = load(Global.current_game)
+	
+	

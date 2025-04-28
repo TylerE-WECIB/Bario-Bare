@@ -1,11 +1,12 @@
 extends Node2D
+class_name Microgame
 
 @onready var gameTimer = $GameTimer
 
 # level-dependent varaibles
-var defaultTimeLimit
-var minTimeLimit
-var timeLimitStep # how much time limit is decreased by based on difficulty
+@export var defaultTimeLimit := 10.0
+@export var minTimeLimit := 3.0
+@export var timeLimitStep := 1.0 # how much time limit is decreased by based on difficulty
 var winConditionMet = false
 
 signal winGame
