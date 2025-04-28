@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://csi00kob1hwxr"]
 
-[ext_resource type="Script" uid="uid://csgbopgommosa" path="res://Scenes/Microgames/default_game.gd" id="1_7bu3d"]
+[ext_resource type="Script" uid="uid://csgbopgommosa" path="res://Scripts/default_game.gd" id="1_7bu3d"]
 
 [node name="DefaultGame" type="Node2D"]
 script = ExtResource("1_7bu3d")
