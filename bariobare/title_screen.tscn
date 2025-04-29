@@ -129,7 +129,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TitleBox/Label:theme_override_colors/font_color")
+tracks/0/path = NodePath("TitleBox/Title:theme_override_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -290,7 +290,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TitleBox/Label:theme_override_colors/font_color")
+tracks/0/path = NodePath("TitleBox/Title:theme_override_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -674,7 +674,7 @@ theme_override_fonts/font = ExtResource("7_jqemp")
 theme_override_font_sizes/font_size = 28
 text = "PLAY!!!"
 
-[node name="Label" type="Label" parent="TitleBox"]
+[node name="Title" type="Label" parent="TitleBox"]
 layout_mode = 0
 offset_left = 20.0011
 offset_top = 139.833
