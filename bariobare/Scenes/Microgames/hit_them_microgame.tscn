@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddherk68msdlb"]
+
+[ext_resource type="Script" uid="uid://csgbopgommosa" path="res://Scripts/default_game.gd" id="1_qtxai"]
+
+[node name="DefaultGame" type="Node2D"]
+script = ExtResource("1_qtxai")
+
+[node name="GameTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="loseGame" from="." to="." method="_on_lose_game"]
+[connection signal="winGame" from="." to="." method="_on_win_game"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
