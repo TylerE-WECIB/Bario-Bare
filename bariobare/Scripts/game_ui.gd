@@ -5,20 +5,24 @@ var timer
 var score := 0
 func _ready() -> void:
 	_on_microgame_start()
+	Global.winGame.connect(_onWinGame)
+	Global.loseGame.connect(_onLoseGame)
 	#$AnimationPlayer.play("fuse_test")
 	$"Score Label".text = "Score :" + str(score)
 	$Bario.visible = false
 	$"Score Label".visible = false
+	$Bomb.visible = false
 
 func _physics_process(delta: float) -> void:
-	$Bomb/Spark.global_position = $Bomb/Path2D/PathFollow2D.global_position
 	$Bomb/Fuse.value = timer.time_left
 	$Bomb/Path2D/PathFollow2D.progress_ratio = timer.time_left / $Bomb/Fuse.max_value
 	$Bomb/Spark.rotation += 1
+	if timer.time_left > 0:
+		$Bomb/Spark.global_position = $Bomb/Path2D/PathFollow2D.global_position
 	
 	#print($Bomb/Fuse.value, timer.time_left)
 	$Bomb/Label.text = str(int(timer.time_left))
-	if $Bomb/Fuse.value == 0:
+	if $Bomb/Fuse.value == 0 and not current_game.gameActive:
 		$Bomb.frame = 1
 		$Bomb.z_index = 0
 		$Bomb/Label.visible = false
@@ -33,7 +37,6 @@ func _on_microgame_start():
 	current_game = load(Global.current_game).instantiate()
 	$GameLoader.add_child(current_game)
 	timer = current_game.gameTimer
-	$Bomb/Fuse.max_value = timer.wait_time
 	$"Game Text".text = current_game.gameTitle
 	$AnimationPlayer.play("next_game")
 
@@ -49,3 +52,12 @@ func increment_score():
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "next_game":
 		Global.emit_signal("startGameTimer")
+		$Bomb/Fuse.max_value = timer.wait_time
+		$Bomb.visible = true
+
+func _onWinGame():
+	$AnimationPlayer.play("bario_win")
+	
+
+func _onLoseGame():
+	$AnimationPlayer.play("bario_lose")

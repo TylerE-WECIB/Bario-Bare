@@ -12,6 +12,8 @@ var game_playing := false
 var microgame_list := []
 
 signal startGameTimer
+signal winGame
+signal loseGame
 
 func _ready() -> void:
 	var dir = DirAccess.open("res://Scenes/Microgames/")
