@@ -6,10 +6,12 @@ var lives = 3
 var maxLives = 4 # may remove/not implement
 var numWins = 0
 var highscore = 0
-var current_game := "res://Scripts/default_game.gd"
+var current_game := "res://Scenes/Microgames/default_game.tscn"
 var game_playing := false
 #list of microgames. will read from microgame folder
 var microgame_list := []
+
+signal startGameTimer
 
 func _ready() -> void:
 	var dir = DirAccess.open("res://Scenes/Microgames/")
