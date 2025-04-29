@@ -8,6 +8,4 @@ script = ExtResource("1_7bu3d")
 [node name="GameTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="loseGame" from="." to="." method="_on_lose_game"]
-[connection signal="winGame" from="." to="." method="_on_win_game"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
