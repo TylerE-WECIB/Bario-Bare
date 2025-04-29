@@ -36,6 +36,8 @@ func _on_microgame_start():
 	$Bomb/Fuse.max_value = timer.wait_time
 	$"Game Text".text = current_game.gameTitle
 	$AnimationPlayer.play("next_game")
+
+
 	
 	
 
@@ -43,3 +45,7 @@ func increment_score():
 	score += 1
 	$"Score Label".text = "Score :" + str(score)
 	
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "next_game":
+		Global.emit_signal("startGameTimer")
