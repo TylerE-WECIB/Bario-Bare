@@ -22,6 +22,7 @@ script = ExtResource("1_nvl01")
 curve = SubResource("Curve2D_onrkg")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="back"]
+rotation = 3.14159
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 

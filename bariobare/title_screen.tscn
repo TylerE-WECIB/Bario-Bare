@@ -586,7 +586,6 @@ offset = Vector2(57.4325, 92.3914)
 position = Vector2(1173, 105)
 scale = Vector2(0.344044, 0.344044)
 sprite_frames = SubResource("SpriteFrames_013yr")
-
 frame_progress = 0.620421
 offset = Vector2(-17.4397, 55.2255)
 
