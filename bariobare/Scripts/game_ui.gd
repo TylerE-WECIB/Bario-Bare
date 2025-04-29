@@ -4,7 +4,7 @@ var current_game
 var timer
 var score := 0
 func _ready() -> void:
-	_on_microgame_start()
+	microgame_start()
 	Global.winGame.connect(_onWinGame)
 	Global.loseGame.connect(_onLoseGame)
 	#$AnimationPlayer.play("fuse_test")
@@ -33,12 +33,12 @@ func _physics_process(delta: float) -> void:
 		$Bomb/Label.visible = true
 		$Bomb/Spark.visible = true
 
-func _on_microgame_start():
+func microgame_start():
 	current_game = load(Global.current_game).instantiate()
 	$GameLoader.add_child(current_game)
 	timer = current_game.gameTimer
 	$"Game Text".text = current_game.gameTitle
-	$AnimationPlayer.play("next_game")
+	$AnimationPlayer.queue("next_game")
 
 
 	
@@ -56,8 +56,12 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		$Bomb.visible = true
 
 func _onWinGame():
+	await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("bario_win")
+	microgame_start()
 	
 
 func _onLoseGame():
+	await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("bario_lose")
+	microgame_start()
