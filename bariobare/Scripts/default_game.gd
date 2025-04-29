@@ -9,14 +9,13 @@ var timeLimit
 @export var defaultTimeLimit = 30
 @export var minTimeLimit = 10
 @export var timeLimitStep = 3 # how much time limit is decreased by based on difficulty
-@export var gameTitle = ""; # stores title of the game as a string
-
+@export var gameTitle = "Default!"; # stores title of the game as a string
+@onready var gameActive = true #checks if the game is playing so the bomb doesn't explode frame 1
 var winConditionMet = false
 
-signal winGame
-signal loseGame
 
 func _ready() -> void:
+	Global.startGameTimer.connect(_onStartGameTimer)
 	setup()
 
 func _process(delta: float) -> void:
@@ -33,12 +32,10 @@ func setup() -> void: # responsible for setting timeLimit and starting the timer
 	print()
 	
 	print("2. start GameTimer using setTimeLimit() as argument")
-	var timeLimit = setTimeLimit()
-	gameTimer.start(timeLimit)
-	
 
 
 func _on_game_timer_timeout() -> void:
+	gameActive = false
 	print("======== _on_game_timer_timeout() ========")
 	print("Duration in seconds: ", gameTimer.get_wait_time())
 	print("winConditionMet: ", winConditionMet)
@@ -46,9 +43,9 @@ func _on_game_timer_timeout() -> void:
 	print()
 	
 	if winConditionMet:
-		winGame.emit()
+		Global.winGame.emit()
 	else:
-		loseGame.emit()
+		Global.loseGame.emit()
 
 func setTimeLimit() -> int: # sets the time limit based on difficulty
 	var levelTimeLimit
@@ -80,3 +77,6 @@ func _on_lose_game() -> void:
 func _on_win_game() -> void:
 	print("======== _on_win_game() ========")
 	print("You won")
+
+func _onStartGameTimer():
+	gameTimer.start(setTimeLimit())
