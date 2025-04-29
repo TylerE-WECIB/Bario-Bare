@@ -11,6 +11,7 @@ var timeLimit
 @export var timeLimitStep = 3 # how much time limit is decreased by based on difficulty
 @export var gameTitle = ""; # stores title of the game as a string
 
+
 var winConditionMet = false
 
 signal winGame
@@ -32,7 +33,7 @@ func setup() -> void: # responsible for setting timeLimit and starting the timer
 	print("timeLimitStep: ", timeLimitStep)
 	print()
 	
-	print("2. start GameTimer using setTimeLimit() as argument")
+	print("2. run setTimeLimit() to get timer data")
 	var timeLimit = setTimeLimit()
 	gameTimer.start(timeLimit)
 	
