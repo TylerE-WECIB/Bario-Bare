@@ -1,8 +1,10 @@
 extends Node2D
+class_name Microgame
 
 @onready var gameTimer = $GameTimer
 
 # level-dependent varaibles
+
 var timeLimit
 @export var defaultTimeLimit = 30
 @export var minTimeLimit = 10
