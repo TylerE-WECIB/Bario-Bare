@@ -3,9 +3,12 @@ extends Node2D
 @onready var gameTimer = $GameTimer
 
 # level-dependent varaibles
-var defaultTimeLimit
-var minTimeLimit
-var timeLimitStep # how much time limit is decreased by based on difficulty
+var timeLimit
+@export var defaultTimeLimit = 30
+@export var minTimeLimit = 10
+@export var timeLimitStep = 3 # how much time limit is decreased by based on difficulty
+@export var gameTitle = ""; # stores title of the game as a string
+
 var winConditionMet = false
 
 signal winGame
@@ -20,18 +23,16 @@ func _process(delta: float) -> void:
 func setup() -> void: # responsible for setting timeLimit and starting the timer
 	print("======== setup() ========")
 	
-	print("1. set level-dependent variables (do later)") # set level specific variables here
-	defaultTimeLimit = 30
-	minTimeLimit = 10
-	timeLimitStep = 3
-	
+	print("1. level-dependent variables (do later)") # set level specific variables here
+	print("gameTitle: ", gameTitle)
 	print("defaultTimeLimit: ", defaultTimeLimit)
 	print("minTimeLimit: ", minTimeLimit)
 	print("timeLimitStep: ", timeLimitStep)
 	print()
 	
 	print("2. start GameTimer using setTimeLimit() as argument")
-	gameTimer.start(setTimeLimit())
+	var timeLimit = setTimeLimit()
+	gameTimer.start(timeLimit)
 	
 
 
