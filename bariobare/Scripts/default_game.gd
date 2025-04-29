@@ -6,8 +6,8 @@ class_name Microgame
 # level-dependent varaibles
 
 var timeLimit
-@export var defaultTimeLimit = 30
-@export var minTimeLimit = 10
+@export var defaultTimeLimit = 10
+@export var minTimeLimit = 5
 @export var timeLimitStep = 3 # how much time limit is decreased by based on difficulty
 @export var gameTitle = "Default!"; # stores title of the game as a string
 @onready var gameActive = true #checks if the game is playing so the bomb doesn't explode frame 1
