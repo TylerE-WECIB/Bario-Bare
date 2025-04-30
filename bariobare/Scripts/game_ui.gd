@@ -73,4 +73,5 @@ func _onWinGame():
 func _onLoseGame():
 	await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("bario_lose")
+	print("YO")
 	microgame_start()
