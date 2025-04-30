@@ -20,6 +20,9 @@ func _ready() -> void:
 	for files in dir.get_files():
 		if files != "default_game.tscn":
 			microgame_list.append("res://Scenes/Microgames/"+files)
-	
+	shuffle_microgame()
 	#debug line to read all of the microgames in the folder
-	#print(microgame_list)
+	print(microgame_list)
+
+func shuffle_microgame():
+	current_game = microgame_list.pick_random()
