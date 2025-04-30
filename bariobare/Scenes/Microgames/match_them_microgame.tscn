@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvijau8t013y2"]
+
+[ext_resource type="Script" uid="uid://chw176vxkrri0" path="res://Scripts/match_them_microgame.gd" id="1_j1gh5"]
+[ext_resource type="PackedScene" uid="uid://bq1tjok4wfu36" path="res://Scenes/Asset Scenes/match_them_card.tscn" id="2_t2dr6"]
+
+[node name="MatchThemMicrogame" type="Node2D"]
+script = ExtResource("1_j1gh5")
+metadata/_custom_type_script = "uid://csgbopgommosa"
+
+[node name="CardPositions" type="Node2D" parent="."]
+
+[node name="Space1" type="Marker2D" parent="CardPositions"]
+position = Vector2(320, 240)
+
+[node name="Space2" type="Marker2D" parent="CardPositions"]
+position = Vector2(640, 240)
+
+[node name="Space3" type="Marker2D" parent="CardPositions"]
+position = Vector2(960, 240)
+
+[node name="Space4" type="Marker2D" parent="CardPositions"]
+position = Vector2(320, 480)
+
+[node name="Space5" type="Marker2D" parent="CardPositions"]
+position = Vector2(640, 480)
+
+[node name="Space6" type="Marker2D" parent="CardPositions"]
+position = Vector2(960, 480)
+
+[node name="Cards" type="Node2D" parent="."]
+
+[node name="MatchThemCard" parent="Cards" instance=ExtResource("2_t2dr6")]
