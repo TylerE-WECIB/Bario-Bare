@@ -15,6 +15,9 @@ signal startGameTimer
 signal winGame
 signal loseGame
 
+# level-specific signals between microgame and asset scenes
+signal turnAllFaceDown # For MATCH THEM
+
 func _ready() -> void:
 	var dir = DirAccess.open("res://Scenes/Microgames/")
 	for files in dir.get_files():

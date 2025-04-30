@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq1tjok4wfu36"]
+
+[ext_resource type="Script" uid="uid://chhmrddhhjtsb" path="res://Scripts/match_them_card.gd" id="1_fuef6"]
+[ext_resource type="Texture2D" uid="uid://k7uvwke6707y" path="res://Art/icon.svg" id="2_51a5v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nrdje"]
+font_color = Color(1, 0, 0, 1)
+
+[node name="MatchThemCard" type="Node2D" groups=["MatchThemCards"]]
+script = ExtResource("1_fuef6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_51a5v")
+
+[node name="Label1" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -41.5
+offset_right = 20.0
+offset_bottom = -18.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_nrdje")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Button" type="Button" parent="."]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 65.0
+offset_bottom = 64.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
