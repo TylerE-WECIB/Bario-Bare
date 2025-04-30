@@ -28,6 +28,8 @@ func _process(_delta: float):
 			moving = true
 			
 	if not moving:
+		if cue_ball.collided_already:
+			Global.winGame.emit()
 		if not taking_shot:
 			taking_shot = true
 			show_cue()
@@ -67,11 +69,13 @@ func generate_balls(): # Sets up balls
 func remove_cue_ball():
 	var old_b = cue_ball
 	remove_child(old_b)
+	Global.loseGame.emit()
 	old_b.queue_free()
-	get_tree().change_scene_to_file("res://Scenes/game_ui.tscn")
+	
 
 func reset_cue_ball():
 	cue_ball = ball.instantiate()
+	cue_ball.ball_type = "cue"
 	add_child(cue_ball)
 	cue_ball.position = START_POS
 	cue_ball.get_node("Sprite2D").texture = ball_images.back()
@@ -80,7 +84,8 @@ func reset_cue_ball():
 func show_cue():
 	$cue.set_process(true)
 	$cue.show()
-	$cue.position = cue_ball.position
+	if !cue_ball_in:
+		$cue.position = cue_ball.position
 
 func in_ball(body):
 	if body == cue_ball:

@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bidcirtw1jatc"]
+[gd_scene load_steps=4 format=3 uid="uid://bidcirtw1jatc"]
+
+[ext_resource type="Script" uid="uid://8ksh6gx4bljo" path="res://Scenes/Microgames/break_it/ball.gd" id="1_wyr0b"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cnrmg"]
 bounce = 4.0
@@ -8,8 +10,13 @@ radius = 24.0832
 
 [node name="ball" type="RigidBody2D" groups=["Balls"]]
 physics_material_override = SubResource("PhysicsMaterial_cnrmg")
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_wyr0b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cnrmg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
