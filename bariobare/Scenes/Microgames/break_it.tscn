@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://vhv458wylbqi"]
+[gd_scene load_steps=5 format=3 uid="uid://dcvd5o4w55bpp"]
 
 [ext_resource type="Script" uid="uid://cxxkkhxntvs1n" path="res://Scripts/break_it.gd" id="1_qndg6"]
 [ext_resource type="PackedScene" uid="uid://bidcirtw1jatc" path="res://Scenes/Microgames/break_it/ball.tscn" id="2_h6r8l"]
