@@ -2,9 +2,11 @@ extends Microgame
 
 @export var ball : PackedScene
 
+var rng = RandomNumberGenerator.new()
+
 var ball_images := []
 var cue_ball
-var START_POS = Vector2(250, 267)
+@export var START_POS = Vector2(250, rng.randf_range(0,720))
 var taking_shot : bool
 var cue_ball_in : bool
 
@@ -51,11 +53,11 @@ func start():
 func generate_balls(): # Sets up balls
 	var count : int = 0
 	var rows : int = 1
-	var dia = 36
+	var dia = 37
 	for col in range(5):
 		for row in range(rows):
 			var b = ball.instantiate()
-			var pos = Vector2(850 + (col * dia), 267 + (row * dia) + (row * dia / 2)) # fix positioning later
+			var pos = Vector2(850 + (col * dia), 350 - (row * dia) + (col * dia / 2)) # fix positioning later
 			add_child(b)
 			b.position = pos
 			b.get_node("Sprite2D").texture = ball_images[count]
