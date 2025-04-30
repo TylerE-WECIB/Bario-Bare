@@ -8,6 +8,8 @@
 script = ExtResource("1_qtxai")
 targetScene = ExtResource("2_rho58")
 projectileScene = ExtResource("3_q8q33")
+defaultTimeLimit = 30
+minTimeLimit = 10
 gameTitle = "HIT THEM"
 metadata/_custom_type_script = "uid://csgbopgommosa"
 
@@ -15,6 +17,10 @@ metadata/_custom_type_script = "uid://csgbopgommosa"
 one_shot = true
 
 [node name="TargetSpawnerTimer" type="Timer" parent="."]
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [node name="TargetSpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-64, 200)
@@ -55,3 +61,4 @@ vertical_alignment = 1
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
 [connection signal="timeout" from="TargetSpawnerTimer" to="." method="_on_target_spawner_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
