@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddherk68msdlb"]
+
+[ext_resource type="Script" uid="uid://b17i1deb6k46a" path="res://Scripts/hit_them_microgame.gd" id="1_qtxai"]
+[ext_resource type="PackedScene" uid="uid://dd7uomq6mxw8a" path="res://Scenes/Asset Scenes/hit_them_target.tscn" id="2_rho58"]
+[ext_resource type="PackedScene" uid="uid://d03qs884u026j" path="res://Scenes/Asset Scenes/hit_them_projectile.tscn" id="3_q8q33"]
+
+[node name="HitThemMicrogame" type="Node2D"]
+script = ExtResource("1_qtxai")
+targetScene = ExtResource("2_rho58")
+projectileScene = ExtResource("3_q8q33")
+gameTitle = "HIT THEM"
+metadata/_custom_type_script = "uid://csgbopgommosa"
+
+[node name="GameTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TargetSpawnerTimer" type="Timer" parent="."]
+
+[node name="TargetSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(-64, 200)
+
+[node name="ProjectileSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(640, 640)
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="TargetSpawnerTimer" to="." method="_on_target_spawner_timer_timeout"]
