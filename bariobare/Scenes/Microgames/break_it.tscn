@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ddq8xo3o4kq2u" path="res://Scenes/Microgames/break_it/cue.tscn" id="4_dtnf8"]
 
 [node name="Main" type="Node2D"]
+z_index = -2
 script = ExtResource("1_qndg6")
 ball = ExtResource("2_h6r8l")
 gameTitle = "BREAK IT!"
@@ -18,5 +19,7 @@ position = Vector2(250, 267)
 offset = Vector2(-480, 266)
 
 [node name="GameTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="shoot" from="cue" to="." method="_on_cue_shoot"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

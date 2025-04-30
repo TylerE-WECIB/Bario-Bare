@@ -6,7 +6,7 @@ var rng = RandomNumberGenerator.new()
 
 var ball_images := []
 var cue_ball
-@export var START_POS = Vector2(250, rng.randf_range(0,720))
+@export var START_POS = Vector2(250, rng.randf_range(1,719))
 var taking_shot : bool
 var cue_ball_in : bool
 
@@ -21,18 +21,21 @@ func _ready():
 
 func _process(_delta: float):
 	var moving = false # checks if the balls are moving
+	if !cue_ball_in and !moving:
+		if cue_ball.collided_already:
+			Global.winGame.emit()
+	else:
+		Global.loseGame.emit()
+
 	for b in get_tree().get_nodes_in_group("Balls"):
 		if b.linear_velocity.length() > 0 and b.linear_velocity.length() < 5.0:
 			b.sleeping = true
 		elif b.linear_velocity.length() >= 5: # if any balls at all are moving sets the variable to true
 			moving = true
-			
+	
 	if not moving:
-		if cue_ball.collided_already:
-			Global.winGame.emit()
 		if not taking_shot:
 			taking_shot = true
-			show_cue()
 	else:
 		if taking_shot:
 			taking_shot = false
@@ -69,7 +72,6 @@ func generate_balls(): # Sets up balls
 func remove_cue_ball():
 	var old_b = cue_ball
 	remove_child(old_b)
-	Global.loseGame.emit()
 	old_b.queue_free()
 	
 
