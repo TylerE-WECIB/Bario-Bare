@@ -5,12 +5,15 @@ var timer
 var score := 0
 func _ready() -> void:
 	microgame_start()
+	
 	Global.winGame.connect(_onWinGame)
 	Global.loseGame.connect(_onLoseGame)
 	#$AnimationPlayer.play("fuse_test")
-	$"Score Label".text = "Score :" + str(score)
+	$"Score Label".text = "Score: " + str(score)
+	$"Lives Label".text = "Lives: " + "[img]res://Art/Heart.png[/img]".repeat(Global.lives)
 	$Bario.visible = false
 	$"Score Label".visible = false
+	$"Lives Label".visible = false
 	$Bomb.visible = false
 
 func _physics_process(delta: float) -> void:
@@ -70,4 +73,5 @@ func _onWinGame():
 func _onLoseGame():
 	await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("bario_lose")
+	print("YO")
 	microgame_start()

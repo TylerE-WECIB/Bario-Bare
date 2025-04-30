@@ -617,7 +617,7 @@ texture = ExtResource("5_gjn1n")
 z_index = 10
 z_as_relative = false
 offset_top = -600.0
-offset_right = 1298.0
+offset_right = 488.0
 offset_bottom = -440.0
 text = "Default!"
 label_settings = SubResource("LabelSettings_3t1kc")
@@ -655,5 +655,18 @@ z_as_relative = false
 position = Vector2(640, 280)
 scale = Vector2(0.627451, 0.627451)
 sprite_frames = SubResource("SpriteFrames_rxsu6")
+
+[node name="Lives Label" type="RichTextLabel" parent="."]
+z_index = 15
+z_as_relative = false
+offset_left = 8.0
+offset_top = 25.0
+offset_right = 899.0
+offset_bottom = 114.0
+theme_override_fonts/normal_font = ExtResource("5_1t2s1")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Lives: [img]res://Art/Heart.png[/img]"
+scroll_active = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
