@@ -45,6 +45,7 @@ func _on_game_timer_timeout() -> void:
 	
 	if winConditionMet:
 		Global.winGame.emit()
+		gameTimer.stop()
 	else:
 		Global.loseGame.emit()
 
@@ -81,3 +82,4 @@ func _on_win_game() -> void:
 
 func _onStartGameTimer():
 	gameTimer.start(setTimeLimit())
+	print("timer started")
