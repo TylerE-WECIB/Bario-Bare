@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddq8xo3o4kq2u"]
+
+[ext_resource type="Texture2D" uid="uid://do0lpo6jwneye" path="res://Art/poolArt/3.png" id="1_niug3"]
+[ext_resource type="Script" uid="uid://k6y5rgacd0vy" path="res://Scenes/Microgames/break_it/cue.gd" id="2_gnd5l"]
+
+[node name="cue" type="Sprite2D"]
+z_index = 2
+texture = ExtResource("1_niug3")
+offset = Vector2(-480, 267)
+script = ExtResource("2_gnd5l")
