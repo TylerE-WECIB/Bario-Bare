@@ -617,11 +617,12 @@ texture = ExtResource("5_gjn1n")
 z_index = 10
 z_as_relative = false
 offset_top = -600.0
-offset_right = 488.0
+offset_right = 1280.0
 offset_bottom = -440.0
 text = "Default!"
 label_settings = SubResource("LabelSettings_3t1kc")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 7

@@ -40,10 +40,10 @@ func _physics_process(delta: float) -> void:
 		$Bomb/Spark.visible = true
 
 func microgame_start():
+	Global.shuffle_microgame()
 	current_game = load(Global.current_game).instantiate()
 	for child in $GameLoader.get_children():
 		child.queue_free()
-	Global.shuffle_microgame()
 	$GameLoader.add_child(current_game)
 	timer = current_game.gameTimer
 	$"Game Text".text = current_game.gameTitle
@@ -64,15 +64,17 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		current_game._onStartGameTimer() #i wanted this to be signal based but whatever
 		$Bomb/Fuse.max_value = timer.wait_time
 		$Bomb.visible = true
+	
+	elif anim_name in ["bario_win","bario_lose"]:
+		microgame_start()
 
 func _onWinGame():
 	await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("bario_win")
-	microgame_start()
+	
 	
 
 func _onLoseGame():
 	await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("bario_lose")
-	print("YO")
-	microgame_start()
+	
