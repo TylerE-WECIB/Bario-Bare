@@ -1,10 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8y8fun2wpaj4"]
+[gd_scene load_steps=6 format=3 uid="uid://b8y8fun2wpaj4"]
 
 [ext_resource type="Texture2D" uid="uid://cvpv161xbodjk" path="res://Art/slotsArt/overlay.png" id="1_v55vs"]
 [ext_resource type="FontFile" uid="uid://dxnwbotig5465" path="res://Fonts/CasinoFlat.ttf" id="2_o26mb"]
 
+[sub_resource type="GDScript" id="GDScript_v55vs"]
+script/source = "extends Sprite2D
+
+signal display
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v55vs"]
+size = Vector2(121, 260)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o26mb"]
+size = Vector2(121, 20)
+
 [node name="overlay" type="Sprite2D"]
 texture = ExtResource("1_v55vs")
+script = SubResource("GDScript_v55vs")
 
 [node name="message" type="Label" parent="."]
 offset_left = -84.0
@@ -17,3 +30,33 @@ theme_override_font_sizes/font_size = 25
 text = "I ❤️ GAMBLING"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="window" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="window"]
+position = Vector2(-226.5, 70)
+shape = SubResource("RectangleShape2D_v55vs")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="window"]
+position = Vector2(8.5, 70)
+shape = SubResource("RectangleShape2D_v55vs")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="window"]
+position = Vector2(245.5, 70)
+shape = SubResource("RectangleShape2D_v55vs")
+
+[node name="winners" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="winners"]
+position = Vector2(-227, 71)
+shape = SubResource("RectangleShape2D_o26mb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="winners"]
+position = Vector2(8, 70)
+shape = SubResource("RectangleShape2D_o26mb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="winners"]
+position = Vector2(246, 68)
+shape = SubResource("RectangleShape2D_o26mb")
+
+[connection signal="body_entered" from="window" to="." method="_on_window_body_entered"]

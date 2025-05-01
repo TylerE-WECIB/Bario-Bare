@@ -6,6 +6,8 @@ var reel1
 var reel2
 var reel3
 
+var selected = []
+
 func _ready():
 	setup()
 	
@@ -26,3 +28,5 @@ func setup():
 	add_child(reel3)
 	pos = Vector2(864, 513)
 	reel3.position = pos
+	
+	print(reel1.get_children())

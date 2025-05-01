@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dguiek55ihhr5"]
+[gd_scene load_steps=3 format=3 uid="uid://dguiek55ihhr5"]
 
 [ext_resource type="Script" uid="uid://djcchn23kqtw8" path="res://Scenes/Microgames/win_big/slot.gd" id="1_d45p0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d45p0"]
+size = Vector2(650, 435)
 
 [node name="slot" type="ColorRect"]
 offset_left = -65.0
@@ -12,3 +15,14 @@ script = ExtResource("1_d45p0")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(65, 43.5)
 scale = Vector2(0.2, 0.2)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
+contact_monitor = true
+max_contacts_reported = 12
+
+[node name="slot" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]
+position = Vector2(-3.8147e-05, 0)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_d45p0")
+
+[connection signal="mouse_entered" from="Sprite2D/RigidBody2D" to="." method="_on_rigid_body_2d_mouse_entered"]

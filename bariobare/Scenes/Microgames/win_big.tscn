@@ -21,6 +21,7 @@ color = Color(0.0706666, 0, 0.53, 1)
 [node name="overlay" parent="." instance=ExtResource("2_c0adk")]
 z_index = 1
 position = Vector2(616, 444)
+script = null
 
 [node name="Images" type="Sprite2D" parent="."]
 position = Vector2(652.375, 63)
