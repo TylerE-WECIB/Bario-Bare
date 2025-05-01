@@ -26,9 +26,10 @@ func _ready() -> void:
 
 func setup():
 	super()
-	print("3. connect Global.cardClicked and set matchesMade = 0")
+	print("3. connect Global.cardClicked and place cards")
 	Global.cardClicked.connect(processCards)
 	matchesMade = 0
+	placeCards()
 	print()
 
 func placeCards():
@@ -121,5 +122,5 @@ func incrementMatches():
 	print(cardsInPlay, " of 6 cards remain")
 	print()
 
-func _onStartGameTimer():
-	placeCards()
+func _on_game_timer_timeout():
+	super()
