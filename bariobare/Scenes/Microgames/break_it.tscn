@@ -19,6 +19,7 @@ position = Vector2(250, 267)
 offset = Vector2(-480, 266)
 
 [node name="GameTimer" type="Timer" parent="."]
+wait_time = 10.0
 one_shot = true
 
 [connection signal="shoot" from="cue" to="." method="_on_cue_shoot"]
