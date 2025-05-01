@@ -73,18 +73,19 @@ func processCards(card):
 	if Global.numFaceUpCards != 2:
 		return
 	else:
-		await get_tree().create_timer(1.0).timeout
 		print("card1 is a ", card1.cardType, ", card2 is a ", card2.cardType)
-		if card1.cardType != card2.cardType:
-			print("two cards are face up but are not the same type")
-			print()
-			
-			resetCards()
-		else:
+		if card1.cardType == card2.cardType:
 			print("the two face up cards are the same type")
 			print()
 			
 			removeMatchingCards()
+		else:
+			await get_tree().create_timer(0.5).timeout
+			
+			print("two cards are face up but are not the same type")
+			print()
+			
+			resetCards()
 	
 	if matchesMade == matchesNeeded:
 		print("You Win!")
