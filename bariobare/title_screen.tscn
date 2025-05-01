@@ -523,6 +523,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(483, 530), Vector2(483, 535)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("High Score:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(600, 650), Vector2(600, 640)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q7w76"]
 _data = {
@@ -813,6 +825,19 @@ libraries = {
 &"": SubResource("AnimationLibrary_q7w76")
 }
 script = ExtResource("14_n1yhu")
+
+[node name="High Score" type="Label" parent="."]
+offset_left = 600.0
+offset_top = 648.0
+offset_right = 981.0
+offset_bottom = 714.0
+theme_override_colors/font_color = Color(0.854902, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_jqemp")
+theme_override_font_sizes/font_size = 44
+text = "High Score: 0"
+vertical_alignment = 2
 
 [node name="PressStart" type="Label" parent="."]
 layout_mode = 0

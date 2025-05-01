@@ -96,6 +96,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		current_game._onStartGameTimer() #i wanted this to be signal based but whatever
 		$Bomb.visible = true
 	elif anim_name == "game_over":
+		if score > Global.highscore:
+			Global.highscore = score
 		get_tree().change_scene_to_file("res://title_screen.tscn")
 	else:
 		$AnimationPlayer.queue("next_game")
