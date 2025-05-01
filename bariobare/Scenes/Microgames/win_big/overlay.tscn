@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8y8fun2wpaj4"]
+
+[ext_resource type="Texture2D" uid="uid://cvpv161xbodjk" path="res://Art/slotsArt/overlay.png" id="1_v55vs"]
+[ext_resource type="FontFile" uid="uid://dxnwbotig5465" path="res://Fonts/CasinoFlat.ttf" id="2_o26mb"]
+
+[node name="overlay" type="Sprite2D"]
+texture = ExtResource("1_v55vs")
+
+[node name="message" type="Label" parent="."]
+offset_left = -84.0
+offset_top = -200.0
+offset_right = 105.0
+offset_bottom = -165.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_o26mb")
+theme_override_font_sizes/font_size = 25
+text = "I ❤️ GAMBLING"
+horizontal_alignment = 1
+vertical_alignment = 1

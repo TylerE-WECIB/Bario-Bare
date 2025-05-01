@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dguiek55ihhr5"]
+
+[ext_resource type="Script" uid="uid://djcchn23kqtw8" path="res://Scenes/Microgames/win_big/slot.gd" id="1_d45p0"]
+
+[node name="slot" type="ColorRect"]
+offset_left = -65.0
+offset_top = 134.0
+offset_right = 65.0
+offset_bottom = 221.0
+script = ExtResource("1_d45p0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(65, 43.5)
+scale = Vector2(0.2, 0.2)

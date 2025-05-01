@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddherk68msdlb"]
+[gd_scene load_steps=4 format=3 uid="uid://de6wago6iucln"]
 
 [ext_resource type="Script" uid="uid://b17i1deb6k46a" path="res://Scripts/hit_them_microgame.gd" id="1_qtxai"]
 [ext_resource type="PackedScene" uid="uid://dd7uomq6mxw8a" path="res://Scenes/Asset Scenes/hit_them_target.tscn" id="2_rho58"]
