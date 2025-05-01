@@ -17,11 +17,18 @@ func _ready() -> void:
 	$Bomb.visible = false
 
 func _physics_process(delta: float) -> void:
+	if $Bomb/Path2D/PathFollow2D.progress_ratio < 0.00001:
+		$Bomb/Spark.visible = false
+	else:
+		$Bomb/Spark.visible = true
+	
+	print($Bomb/Path2D/PathFollow2D.progress_ratio)
 	$Bomb/Spark.rotation += 1
 	if timer.time_left > 0 and current_game.gameActive:
 		$Bomb/Spark.global_position = $Bomb/Path2D/PathFollow2D.global_position
 		$Bomb/Fuse.value = timer.time_left
 		$Bomb/Path2D/PathFollow2D.progress_ratio = timer.time_left / $Bomb/Fuse.max_value
+		
 		$Bomb/Label.text = str(int(ceil(timer.time_left)))
 	
 	if not current_game.gameActive:
@@ -31,8 +38,8 @@ func _physics_process(delta: float) -> void:
 		$Bomb/Fuse.value = timer.wait_time
 		$Bomb/Path2D/PathFollow2D.progress_ratio = timer.time_left / $Bomb/Fuse.max_value
 		$Bomb/Label.text = str(int(ceil(timer.time_left)))
-	print($Bomb/Fuse.value, "  ", $Bomb/Path2D/PathFollow2D.progress_ratio, "  ", current_game.gameActive)
-	print($AnimationPlayer.current_animation)
+	#print($Bomb/Fuse.value, "  ", $Bomb/Path2D/PathFollow2D.progress_ratio, "  ", current_game.gameActive)
+	#print($AnimationPlayer.current_animation)
 	if $Bomb/Fuse.value == 0 and not current_game.gameActive:
 		$Bomb.frame = 1
 		$Bomb.z_index = 0
@@ -42,7 +49,7 @@ func _physics_process(delta: float) -> void:
 		$Bomb.frame = 0
 		$Bomb.z_index = 5
 		$Bomb/Label.visible = true
-		$Bomb/Spark.visible = true
+		#$Bomb/Spark.visible = true
 
 func microgame_start():
 	print("next game starting")
