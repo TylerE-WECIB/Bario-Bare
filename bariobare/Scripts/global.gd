@@ -17,6 +17,7 @@ signal loseGame
 
 # level-specific signals between microgame and asset scenes
 signal turnAllFaceDown # For MATCH THEM
+signal cardClicked(card) # For MATCH THEM
 
 func _ready() -> void:
 	var dir = DirAccess.open("res://Scenes/Microgames/")
