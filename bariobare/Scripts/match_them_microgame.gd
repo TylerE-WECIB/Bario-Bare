@@ -8,7 +8,7 @@ extends Microgame
 @onready var cards = $Cards # parent node to the 6 cards
 
 # level-specific variables
-var numFaceUpCards = 0 # number of face up cards
+
 var matchesMade = 0
 var matchesNeeded = 3
 var cardsInPlay = 6
@@ -28,6 +28,7 @@ func setup():
 	super()
 	print("3. connect Global.cardClicked and place cards")
 	Global.cardClicked.connect(processCards)
+	Global.numFaceUpCards = 0
 	matchesMade = 0
 	placeCards()
 	print()
@@ -55,10 +56,10 @@ func _process(delta: float) -> void:
 func processCards(card):
 	print("======== processCards(card) ========")
 	
-	numFaceUpCards += 1
+	Global.numFaceUpCards += 1
 	
 	print("The card you clicked was a ", card.cardType, " card")
-	print("There are ", numFaceUpCards, " face up card(s)")
+	print("There are ", Global.numFaceUpCards, " face up card(s)")
 	
 	if card1 == null:
 		print("selected first card")
@@ -69,7 +70,7 @@ func processCards(card):
 	
 	print()
 	
-	if numFaceUpCards != 2:
+	if Global.numFaceUpCards != 2:
 		return
 	else:
 		await get_tree().create_timer(1.0).timeout
@@ -105,7 +106,7 @@ func resetCards():
 	print("======== resetCards() ========")
 	
 	Global.turnAllFaceDown.emit()
-	numFaceUpCards = 0
+	Global.numFaceUpCards = 0
 	card1 = null
 	card2 = null
 	

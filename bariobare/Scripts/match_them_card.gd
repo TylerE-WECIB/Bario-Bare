@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	pass
 
 func turnFaceUp():
-	if !faceUp:
+	if !faceUp and Global.numFaceUpCards < 2:
 		print("turning card face up")
 		faceUp = true
 		label1.show()
