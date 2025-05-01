@@ -5,7 +5,14 @@
 
 [node name="MatchThemMicrogame" type="Node2D"]
 script = ExtResource("1_j1gh5")
+defaultTimeLimit = 16
+minTimeLimit = 10
+timeLimitStep = 2
+gameTitle = "MATCH THEM!"
 metadata/_custom_type_script = "uid://csgbopgommosa"
+
+[node name="GameTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="CardPositions" type="Node2D" parent="."]
 
@@ -29,4 +36,22 @@ position = Vector2(960, 480)
 
 [node name="Cards" type="Node2D" parent="."]
 
-[node name="MatchThemCard" parent="Cards" instance=ExtResource("2_t2dr6")]
+[node name="Card1" parent="Cards" instance=ExtResource("2_t2dr6")]
+cardType = "Circle"
+
+[node name="Card2" parent="Cards" instance=ExtResource("2_t2dr6")]
+cardType = "Circle"
+
+[node name="Card3" parent="Cards" instance=ExtResource("2_t2dr6")]
+cardType = "Square"
+
+[node name="Card4" parent="Cards" instance=ExtResource("2_t2dr6")]
+cardType = "Square"
+
+[node name="Card5" parent="Cards" instance=ExtResource("2_t2dr6")]
+cardType = "Triangle"
+
+[node name="Card6" parent="Cards" instance=ExtResource("2_t2dr6")]
+cardType = "Triangle"
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
