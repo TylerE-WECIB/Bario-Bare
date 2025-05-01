@@ -49,9 +49,9 @@ cardType = "Square"
 cardType = "Square"
 
 [node name="Card5" parent="Cards" instance=ExtResource("2_t2dr6")]
-cardType = "Triangle"
+cardType = "Diamond"
 
 [node name="Card6" parent="Cards" instance=ExtResource("2_t2dr6")]
-cardType = "Triangle"
+cardType = "Diamond"
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
