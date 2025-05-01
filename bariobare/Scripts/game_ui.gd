@@ -43,6 +43,7 @@ func microgame_start():
 	current_game = load(Global.current_game).instantiate()
 	for child in $GameLoader.get_children():
 		child.queue_free()
+	Global.shuffle_microgame()
 	$GameLoader.add_child(current_game)
 	timer = current_game.gameTimer
 	$"Game Text".text = current_game.gameTitle
