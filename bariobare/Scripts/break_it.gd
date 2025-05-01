@@ -26,6 +26,7 @@ func _process(_delta: float):
 			Global.winGame.emit()
 	else:
 		Global.loseGame.emit()
+		gameActive = false
 
 	for b in get_tree().get_nodes_in_group("Balls"):
 		if b.linear_velocity.length() > 0 and b.linear_velocity.length() < 5.0:
@@ -97,4 +98,5 @@ func in_ball(body):
 		remove_child(body)
 
 func _on_cue_shoot(power):
-	cue_ball.apply_central_impulse(power)
+	if gameActive:
+		cue_ball.apply_central_impulse(power)
