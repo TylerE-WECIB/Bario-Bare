@@ -6,7 +6,7 @@ var lives = 3
 var maxLives = 4 # may remove/not implement
 var numWins = 0
 var highscore = 0
-var current_game := "res://Scenes/Microgames/break_it.tscn"
+var current_game := "res://Scenes/Microgames/win_big.tscn"
 var game_playing := false
 #list of microgames. will read from microgame folder
 var microgame_list := []

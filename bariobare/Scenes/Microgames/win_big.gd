@@ -72,6 +72,7 @@ func win_check():
 	print("win check run")
 	if winners[0] == winners[1] and winners[1] == winners[2]:
 		print("you won")
+		Global.winGame.emit()
 
 
 func raise_slots(reel):
