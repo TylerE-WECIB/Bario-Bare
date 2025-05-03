@@ -8,7 +8,7 @@
 script = ExtResource("1_qtxai")
 targetScene = ExtResource("2_rho58")
 projectileScene = ExtResource("3_q8q33")
-defaultTimeLimit = 30
+defaultTimeLimit = 20
 minTimeLimit = 10
 gameTitle = "HIT THEM"
 metadata/_custom_type_script = "uid://csgbopgommosa"

@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var type = "default"
+@export var cardType = "default"
 @export var faceUp = false
 
 @onready var sprite = $Sprite2D
@@ -11,21 +11,29 @@ signal clicked(type)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	label1.set_text(type)
-	label2.set_text("Face up? " + str(faceUp))
+	label1.hide()
+	label1.set_text(cardType)
+	label2.set_text("Face Down")
+	Global.turnAllFaceDown.connect(turnFaceDown)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func updateFace():
+func turnFaceUp():
+	if !faceUp and Global.numFaceUpCards < 2:
+		print("turning card face up")
+		faceUp = true
+		label1.show()
+		label2.set_text("Face up")
+		Global.cardClicked.emit(self)
+
+func turnFaceDown():
 	if faceUp:
 		faceUp = false
-	else:
-		faceUp = true
-	label2.set_text("Face up? " + str(faceUp))
-
+		label1.hide()
+		label2.set_text("Face Down")
 
 func _on_button_pressed() -> void:
-	updateFace()
+	turnFaceUp()
