@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtl0p10omg0sn"]
+
+[ext_resource type="Texture2D" uid="uid://dyhba0dxm2fmi" path="res://Art/slotsArt/up.png" id="1_ctcip"]
+
+[node name="Up" type="Button"]
+offset_right = 134.0
+offset_bottom = 106.0
+scale = Vector2(0.36, 0.36)
+
+[node name="Up" type="Sprite2D" parent="."]
+position = Vector2(66.6666, 50)
+texture = ExtResource("1_ctcip")

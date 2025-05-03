@@ -3,6 +3,14 @@ extends Control
 @export var slot : PackedScene
 
 var sprites = ["apple", "banana", "bear", "cat", "cherries", "seven"]
+var up_counter = 5
+var down_counter = 0
+
+func _process(delta: float) -> void:
+	if up_counter < 0:
+		up_counter = 5
+	if down_counter >= 6:
+		down_counter = 0
 
 func _ready():
 	randomize()
@@ -11,4 +19,4 @@ func _ready():
 		var s = slot.instantiate()
 		add_child(s)
 		s.position.y -= i * 89
-		s.get_node("Sprite2D").texture = load("res://Art/slotsArt/" + sprites[i] + ".png")
+		s.get_node("Area2D").get_node("Sprite2D").texture = load("res://Art/slotsArt/" + sprites[i] + ".png")

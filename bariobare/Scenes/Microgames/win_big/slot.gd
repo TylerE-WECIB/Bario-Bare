@@ -1,16 +1,15 @@
 extends ColorRect
 
+
 func _ready() -> void:
 	hide()
-	$Sprite2D/RigidBody2D.mouse_entered.connect(show_slot())
-	
-func show_slot():
-	print("show")
-	show()
 
 
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.name == "window":
+		show() # Replace with function body.
 
 
-func _on_rigid_body_2d_mouse_entered():
-	print("hello")
-	show_slot() # Replace with function body.
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.name == "window":
+		hide() # Replace with function body.
