@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bn7frujs7opr1"]
+
+[ext_resource type="Script" uid="uid://ciu5ckb1ckq5g" path="res://Scenes/Microgames/win_big.gd" id="1_c6ru3"]
+[ext_resource type="PackedScene" uid="uid://b8y8fun2wpaj4" path="res://Scenes/Microgames/win_big/overlay.tscn" id="2_c0adk"]
+[ext_resource type="Texture2D" uid="uid://cy6ihntcwxqus" path="res://Art/slotsArt/images.jpg" id="3_gsfjd"]
+[ext_resource type="PackedScene" uid="uid://cvu2r42xxnjb4" path="res://Scenes/Microgames/win_big/slots.tscn" id="4_c6ru3"]
+[ext_resource type="PackedScene" uid="uid://v4ha8377alw4" path="res://Scenes/Microgames/win_big/down.tscn" id="4_ylppn"]
+[ext_resource type="PackedScene" uid="uid://dtl0p10omg0sn" path="res://Scenes/Microgames/win_big/up.tscn" id="5_xntrr"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_c6ru3")
+slots = ExtResource("4_c6ru3")
+up_but = ExtResource("5_xntrr")
+down_but = ExtResource("4_ylppn")
+gameTitle = "WIN BIG!"
+metadata/_custom_type_script = "uid://csgbopgommosa"
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.0706666, 0, 0.53, 1)
+
+[node name="overlay" parent="." instance=ExtResource("2_c0adk")]
+z_index = 1
+position = Vector2(617, 331)
+
+[node name="Images" type="Sprite2D" parent="."]
+position = Vector2(652.375, 28.875)
+scale = Vector2(4.94011, 0.27356)
+texture = ExtResource("3_gsfjd")
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="winner" from="overlay" to="." method="_on_overlay_winner"]
