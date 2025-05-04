@@ -55,7 +55,12 @@ func microgame_start():
 	$Bomb/Fuse.value = timer.wait_time
 	$Bomb/Path2D/PathFollow2D.progress_ratio = timer.time_left / $Bomb/Fuse.max_value
 	$Bomb/Label.text = str(int(ceil(timer.time_left)))
-	$AnimationPlayer.queue("next_game")
+	if Global.lives > 0:
+		$AnimationPlayer.clear_queue()
+		$AnimationPlayer.queue("next_game")
+	else:
+		$"Game Text".text = "GAME OVER :("
+		$AnimationPlayer.queue("game_over")
 
 
 	
@@ -64,7 +69,10 @@ func microgame_start():
 func increment_score():
 	score += 1
 	$"Score Label".text = "Score :" + str(score)
-	
+
+func decrement_lives():
+	Global.lives -= 1
+	$"Lives Label".text = "Lives: " + "[img]res://Art/Heart.png[/img]".repeat(Global.lives)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "next_game":
@@ -72,15 +80,19 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		current_game._onStartGameTimer() #i wanted this to be signal based but whatever
 		$Bomb/Fuse.max_value = timer.wait_time
 		$Bomb.visible = true
+	if anim_name == "game_over":
+		if score > Global.highscore:
+			Global.highscore = score
+		get_tree().change_scene_to_file("res://title_screen.tscn")
 
 func _onWinGame():
 	await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("bario_win")
-	microgame_start()
+	#microgame_start()
 	
 
 func _onLoseGame():
 	await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("bario_lose")
 	print("YO")
-	microgame_start()
+	#microgame_start()
