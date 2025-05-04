@@ -8,7 +8,7 @@ extends Microgame
 @onready var cards = $Cards # parent node to the 6 cards
 
 # level-specific variables
-var numFaceUpCards = 0 # number of face up cards
+
 var matchesMade = 0
 var matchesNeeded = 3
 var cardsInPlay = 6
@@ -28,6 +28,7 @@ func setup():
 	super()
 	print("3. connect Global.cardClicked and place cards")
 	Global.cardClicked.connect(processCards)
+	Global.numFaceUpCards = 0
 	matchesMade = 0
 	placeCards()
 	print()
@@ -55,10 +56,10 @@ func _process(delta: float) -> void:
 func processCards(card):
 	print("======== processCards(card) ========")
 	
-	numFaceUpCards += 1
+	Global.numFaceUpCards += 1
 	
 	print("The card you clicked was a ", card.cardType, " card")
-	print("There are ", numFaceUpCards, " face up card(s)")
+	print("There are ", Global.numFaceUpCards, " face up card(s)")
 	
 	if card1 == null:
 		print("selected first card")
@@ -69,21 +70,22 @@ func processCards(card):
 	
 	print()
 	
-	if numFaceUpCards != 2:
+	if Global.numFaceUpCards != 2:
 		return
 	else:
-		await get_tree().create_timer(1.0).timeout
 		print("card1 is a ", card1.cardType, ", card2 is a ", card2.cardType)
-		if card1.cardType != card2.cardType:
-			print("two cards are face up but are not the same type")
-			print()
-			
-			resetCards()
-		else:
+		if card1.cardType == card2.cardType:
 			print("the two face up cards are the same type")
 			print()
 			
 			removeMatchingCards()
+		else:
+			await get_tree().create_timer(0.5).timeout
+			
+			print("two cards are face up but are not the same type")
+			print()
+			
+			resetCards()
 	
 	if matchesMade == matchesNeeded:
 		print("You Win!")
@@ -105,7 +107,7 @@ func resetCards():
 	print("======== resetCards() ========")
 	
 	Global.turnAllFaceDown.emit()
-	numFaceUpCards = 0
+	Global.numFaceUpCards = 0
 	card1 = null
 	card2 = null
 	

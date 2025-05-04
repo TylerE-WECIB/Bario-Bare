@@ -6,7 +6,7 @@ var lives = 3
 var maxLives = 4 # may remove/not implement
 var numWins = 0
 var highscore = 0
-var current_game := "res://Scenes/Microgames/break_it.tscn"
+var current_game := "res://Scenes/Microgames/win_big.tscn"
 var game_playing := false
 #list of microgames. will read from microgame folder
 var microgame_list := []
@@ -15,9 +15,10 @@ signal startGameTimer
 signal winGame
 signal loseGame
 
-# level-specific signals between microgame and asset scenes
+# level-specific signals and variables between microgame and asset scenes
 signal turnAllFaceDown # For MATCH THEM
 signal cardClicked(card) # For MATCH THEM
+@export var numFaceUpCards = 0 # For MATCH THEM, number of face up cards
 
 func _ready() -> void:
 	var dir = DirAccess.open("res://Scenes/Microgames/")

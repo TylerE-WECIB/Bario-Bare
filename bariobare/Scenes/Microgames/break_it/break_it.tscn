@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu5cueuv2jou0"]
+
+[ext_resource type="Script" uid="uid://cxxkkhxntvs1n" path="res://Scripts/break_it.gd" id="1_4ixsv"]
+[ext_resource type="PackedScene" uid="uid://d0kojkhpww46e" path="res://Scenes/Microgames/break_it/table.tscn" id="1_gbuov"]
+[ext_resource type="PackedScene" uid="uid://bidcirtw1jatc" path="res://Scenes/Microgames/break_it/ball.tscn" id="2_kb87q"]
+[ext_resource type="PackedScene" uid="uid://ddq8xo3o4kq2u" path="res://Scenes/Microgames/break_it/cue.tscn" id="4_kb87q"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_4ixsv")
+ball = ExtResource("2_kb87q")
+metadata/_custom_type_script = "uid://csgbopgommosa"
+
+[node name="table" parent="." instance=ExtResource("1_gbuov")]
+
+[node name="cue" parent="." instance=ExtResource("4_kb87q")]
+position = Vector2(250, 267)
+offset = Vector2(-480, 266)
+
+[connection signal="shoot" from="cue" to="." method="_on_cue_shoot"]
