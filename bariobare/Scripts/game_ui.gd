@@ -73,6 +73,7 @@ func play_explosion():
 
 func increment_score():
 	score += 1
+	Global.difficulty += score / 2
 	$"Score Label".text = "Score :" + str(score)
 
 func decrement_lives():

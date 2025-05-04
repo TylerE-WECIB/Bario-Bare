@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://y8iwbu4lxrte"]
+[gd_scene load_steps=26 format=3 uid="uid://y8iwbu4lxrte"]
 
 [ext_resource type="Script" uid="uid://cgni0ohrnpe6b" path="res://Scripts/game_ui.gd" id="1_gek4i"]
 [ext_resource type="Texture2D" uid="uid://q63d0vc26qlv" path="res://Art/fuse.png" id="2_x63ue"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://73du0l1w4lpd" path="res://Sounds/kids-cheering-sound-effect.mp3" id="3_dvsk4"]
 [ext_resource type="Texture2D" uid="uid://b6loq1fcklgfh" path="res://Art/boom.png" id="3_x63ue"]
 [ext_resource type="AudioStream" uid="uid://ddikgdwtkeaq1" path="res://Sounds/next_microgame.mp3" id="4_74ohg"]
+[ext_resource type="AudioStream" uid="uid://d2l51y3t0qlvg" path="res://Sounds/spongebob-disappointed-sound-effect_isePyIO.mp3" id="4_cjtla"]
 [ext_resource type="FontFile" uid="uid://cq7buil1aq8m" path="res://Fonts/warioware-inc.ttf" id="5_1t2s1"]
 [ext_resource type="Texture2D" uid="uid://cbbeb6hg0fho5" path="res://Art/spark.png" id="5_gjn1n"]
 [ext_resource type="Texture2D" uid="uid://b71shy0o3rf4y" path="res://Art/bario_happy.png" id="7_3t1kc"]
@@ -546,7 +547,7 @@ tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_74ohg"]
 resource_name = "game_over"
-length = 3.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -607,6 +608,21 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_cjtla")
+}],
+"times": PackedFloat32Array(0.0333333)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_dvsk4"]
 resource_name = "next_game"
