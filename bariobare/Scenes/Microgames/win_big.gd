@@ -23,26 +23,26 @@ func setup():
 	
 	reel1 = slots.instantiate()
 	add_child(reel1)
-	var pos = Vector2(321, 569)
+	var pos = Vector2(321, 533)
 	reel1.position = pos
 	reels.append(reel1)
 	
 	reel2 = slots.instantiate()
 	add_child(reel2)
-	pos = Vector2(560, 569)
+	pos = Vector2(560, 533)
 	reel2.position = pos
 	reels.append(reel2)
 	
 	reel3 = slots.instantiate()
 	add_child(reel3)
-	pos = Vector2(799, 569)
+	pos = Vector2(799, 533)
 	reel3.position = pos
 	reels.append(reel3)
 	
 	for i in range(3): # up buttons
 		var b = up_but.instantiate()
 		add_child(b)
-		pos = Vector2(363 + (240 * i), 229)
+		pos = Vector2(363 + (240 * i), 193)
 		b.position = pos
 		b.z_index = 2
 		buttons.append(b)
@@ -50,7 +50,7 @@ func setup():
 	for i in range(3): # down buttons
 		var b = down_but.instantiate()
 		add_child(b)
-		pos = Vector2(363 + (240 * i), 607)
+		pos = Vector2(363 + (240 * i), 571)
 		b.position = pos
 		b.z_index = 2
 		buttons.append(b)

@@ -40,12 +40,21 @@ func _physics_process(delta: float) -> void:
 		$Bomb/Spark.visible = true
 
 func microgame_start():
+	print("next game starting")
+	$Bomb.visible = false
+	Global.shuffle_microgame()
 	current_game = load(Global.current_game).instantiate()
 	for child in $GameLoader.get_children():
 		child.queue_free()
 	$GameLoader.add_child(current_game)
+	current_game.gameTimer.wait_time = current_game.setTimeLimit()
 	timer = current_game.gameTimer
+	$Bomb/Fuse.max_value = timer.wait_time
 	$"Game Text".text = current_game.gameTitle
+	$Bomb/Label.text = str(int(timer.wait_time))
+	$Bomb/Fuse.value = timer.wait_time
+	$Bomb/Path2D/PathFollow2D.progress_ratio = timer.time_left / $Bomb/Fuse.max_value
+	$Bomb/Label.text = str(int(ceil(timer.time_left)))
 	$AnimationPlayer.queue("next_game")
 
 
