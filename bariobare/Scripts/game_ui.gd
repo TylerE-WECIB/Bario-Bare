@@ -3,6 +3,7 @@ extends Node2D
 var current_game
 var timer
 var score := 0
+var bomb_exploded := false
 func _ready() -> void:
 	microgame_start()
 	
@@ -28,11 +29,12 @@ func _physics_process(delta: float) -> void:
 		$Bomb/Label.text = str(int(ceil(timer.time_left)))
 	else:
 		$Bomb/Label.text = str(int(timer.wait_time))
-	if $Bomb/Fuse.value == 0 and not current_game.gameActive:
+	if $Bomb/Fuse.value == 0 and not current_game.gameActive and $Bomb.visible:
 		$Bomb.frame = 1
 		$Bomb.z_index = 0
 		$Bomb/Label.visible = false
 		$Bomb/Spark.visible = false
+		play_explosion()
 	else:
 		$Bomb.frame = 0
 		$Bomb.z_index = 5
@@ -42,6 +44,7 @@ func _physics_process(delta: float) -> void:
 func microgame_start():
 	print("next game starting")
 	$Bomb.visible = false
+	bomb_exploded = false
 	Global.shuffle_microgame()
 	current_game = load(Global.current_game).instantiate()
 	for child in $GameLoader.get_children():
@@ -56,14 +59,16 @@ func microgame_start():
 	$Bomb/Path2D/PathFollow2D.progress_ratio = timer.time_left / $Bomb/Fuse.max_value
 	$Bomb/Label.text = str(int(ceil(timer.time_left)))
 	if Global.lives > 0:
-		$AnimationPlayer.clear_queue()
 		$AnimationPlayer.queue("next_game")
 	else:
 		$"Game Text".text = "GAME OVER :("
 		$AnimationPlayer.queue("game_over")
 
 
-	
+func play_explosion():
+	if not bomb_exploded:
+		$Bomb/AudioStreamPlayer.play()
+		bomb_exploded = true
 	
 
 func increment_score():
@@ -86,13 +91,16 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		get_tree().change_scene_to_file("res://title_screen.tscn")
 
 func _onWinGame():
-	await get_tree().create_timer(1).timeout
+	print("Game Won!")
+	timer.paused = true
+	#await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("bario_win")
 	#microgame_start()
 	
 
 func _onLoseGame():
-	await get_tree().create_timer(1).timeout
+	print("Game Lost :(")
+	timer.paused = true
+	#await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("bario_lose")
-	print("YO")
 	#microgame_start()
