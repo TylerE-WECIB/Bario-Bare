@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bn7frujs7opr1"]
 
-[ext_resource type="Script" uid="uid://ciu5ckb1ckq5g" path="res://Scenes/Microgames/win_big.gd" id="1_c6ru3"]
+[ext_resource type="Script" uid="uid://ciu5ckb1ckq5g" path="res://Scripts/win_big.gd" id="1_c6ru3"]
 [ext_resource type="PackedScene" uid="uid://b8y8fun2wpaj4" path="res://Scenes/Microgames/win_big/overlay.tscn" id="2_c0adk"]
 [ext_resource type="Texture2D" uid="uid://cy6ihntcwxqus" path="res://Art/slotsArt/images.jpg" id="3_gsfjd"]
 [ext_resource type="PackedScene" uid="uid://cvu2r42xxnjb4" path="res://Scenes/Microgames/win_big/slots.tscn" id="4_c6ru3"]
