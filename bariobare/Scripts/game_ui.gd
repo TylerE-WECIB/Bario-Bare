@@ -3,6 +3,7 @@ extends Node2D
 var current_game
 var timer
 var score := 0
+var bomb_exploded := false
 func _ready() -> void:
 	microgame_start()
 	
@@ -17,44 +18,33 @@ func _ready() -> void:
 	$Bomb.visible = false
 
 func _physics_process(delta: float) -> void:
-	if $Bomb/Path2D/PathFollow2D.progress_ratio < 0.00001:
-		$Bomb/Spark.visible = false
-	else:
-		$Bomb/Spark.visible = true
-	
-	#print($Bomb/Path2D/PathFollow2D.progress_ratio)
+	$Bomb/Fuse.value = timer.time_left
+	$Bomb/Path2D/PathFollow2D.progress_ratio = timer.time_left / $Bomb/Fuse.max_value
 	$Bomb/Spark.rotation += 1
-	if timer.time_left > 0 and current_game.gameActive:
+	if timer.time_left > 0:
 		$Bomb/Spark.global_position = $Bomb/Path2D/PathFollow2D.global_position
-		$Bomb/Fuse.value = timer.time_left
-		$Bomb/Path2D/PathFollow2D.progress_ratio = timer.time_left / $Bomb/Fuse.max_value
-		
-		$Bomb/Label.text = str(int(ceil(timer.time_left)))
 	
-	#if not current_game.gameActive:
-		#$Bomb/Fuse.max_value = timer.wait_time
-		#$"Game Text".text = current_game.gameTitle
-		#$Bomb/Label.text = str(int(timer.wait_time))
-		#$Bomb/Fuse.value = timer.wait_time
-		#$Bomb/Path2D/PathFollow2D.progress_ratio = timer.time_left / $Bomb/Fuse.max_value
-		#$Bomb/Label.text = str(int(ceil(timer.time_left)))
-	#print($Bomb/Fuse.value, "  ", $Bomb/Path2D/PathFollow2D.progress_ratio, "  ", current_game.gameActive)
-	#print($AnimationPlayer.current_animation)
-	if $Bomb/Fuse.value == 0 and not current_game.gameActive:
+	#print($Bomb/Fuse.value, timer.time_left)
+	if timer.time_left > 0:
+		$Bomb/Label.text = str(int(ceil(timer.time_left)))
+	else:
+		$Bomb/Label.text = str(int(timer.wait_time))
+	if $Bomb/Fuse.value == 0 and not current_game.gameActive and $Bomb.visible:
 		$Bomb.frame = 1
 		$Bomb.z_index = 0
 		$Bomb/Label.visible = false
 		$Bomb/Spark.visible = false
+		play_explosion()
 	else:
-		print($Bomb/Fuse.value)
 		$Bomb.frame = 0
 		$Bomb.z_index = 5
 		$Bomb/Label.visible = true
-		#$Bomb/Spark.visible = true
+		$Bomb/Spark.visible = true
 
 func microgame_start():
 	print("next game starting")
 	$Bomb.visible = false
+	bomb_exploded = false
 	Global.shuffle_microgame()
 	current_game = load(Global.current_game).instantiate()
 	for child in $GameLoader.get_children():
@@ -68,50 +58,50 @@ func microgame_start():
 	$Bomb/Fuse.value = timer.wait_time
 	$Bomb/Path2D/PathFollow2D.progress_ratio = timer.time_left / $Bomb/Fuse.max_value
 	$Bomb/Label.text = str(int(ceil(timer.time_left)))
-	$AnimationPlayer.queue("next_game")
-	
-	
+	if Global.lives > 0:
+		$AnimationPlayer.queue("next_game")
+	else:
+		$"Game Text".text = "GAME OVER :("
+		$AnimationPlayer.queue("game_over")
 
 
-	
+func play_explosion():
+	if not bomb_exploded:
+		$Bomb/AudioStreamPlayer.play()
+		bomb_exploded = true
 	
 
 func increment_score():
 	score += 1
+	Global.difficulty += score / 2
 	$"Score Label".text = "Score :" + str(score)
 
 func decrement_lives():
-	if Global.lives > 0:
-		Global.lives -= 1
+	Global.lives -= 1
 	$"Lives Label".text = "Lives: " + "[img]res://Art/Heart.png[/img]".repeat(Global.lives)
-	
-	if Global.lives == 0:
-		$"Game Text".text = "Game Over!"
-		await get_tree().create_timer(0.25).timeout
-		$AnimationPlayer.play("game_over")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "next_game":
 		#Global.emit_signal("startGameTimer")
 		current_game._onStartGameTimer() #i wanted this to be signal based but whatever
+		$Bomb/Fuse.max_value = timer.wait_time
 		$Bomb.visible = true
-	elif anim_name == "game_over":
+	if anim_name == "game_over":
 		if score > Global.highscore:
 			Global.highscore = score
 		get_tree().change_scene_to_file("res://title_screen.tscn")
-	else:
-		$AnimationPlayer.queue("next_game")
-
 
 func _onWinGame():
-	if not $AnimationPlayer.is_playing():
-		await get_tree().create_timer(1).timeout
-		$AnimationPlayer.play("bario_win")
-	
+	print("Game Won!")
+	timer.paused = true
+	#await get_tree().create_timer(1).timeout
+	$AnimationPlayer.play("bario_win")
+	#microgame_start()
 	
 
 func _onLoseGame():
-	if not $AnimationPlayer.is_playing():
-		await get_tree().create_timer(1).timeout
-		$AnimationPlayer.play("bario_lose")
-	
+	print("Game Lost :(")
+	timer.paused = true
+	#await get_tree().create_timer(1).timeout
+	$AnimationPlayer.play("bario_lose")
+	#microgame_start()

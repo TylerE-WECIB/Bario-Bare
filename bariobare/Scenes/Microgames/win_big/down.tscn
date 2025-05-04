@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://v4ha8377alw4"]
+
+[ext_resource type="Texture2D" uid="uid://b6fcbmo0pce2b" path="res://Art/slotsArt/down.png" id="1_r7xpe"]
+
+[node name="down" type="Button"]
+offset_right = 134.0
+offset_bottom = 106.0
+scale = Vector2(0.36, 0.36)
+
+[node name="Down" type="Sprite2D" parent="."]
+position = Vector2(66.6667, 58.3333)
+texture = ExtResource("1_r7xpe")

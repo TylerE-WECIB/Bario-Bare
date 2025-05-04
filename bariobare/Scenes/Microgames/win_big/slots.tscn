@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvu2r42xxnjb4"]
+
+[ext_resource type="Script" uid="uid://buk53g1tfc67b" path="res://Scenes/Microgames/win_big/slots.gd" id="1_48ijk"]
+[ext_resource type="PackedScene" uid="uid://dguiek55ihhr5" path="res://Scenes/Microgames/win_big/slot.tscn" id="2_f1j4p"]
+
+[node name="slots" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_48ijk")
+slot = ExtResource("2_f1j4p")
