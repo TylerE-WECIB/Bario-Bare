@@ -1,5 +1,5 @@
 # Bario-Bare
-Bario-Bare is a collection of minigames that must be completed within the time limit.
+Bario-Bare is a collection of minigames that must be completed within the time limit. Get as far as you can without running out of lives.
 To play, download and run bariobare.exe
 
 There are 4 minigames that can be rolled:
