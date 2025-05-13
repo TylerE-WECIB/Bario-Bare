@@ -9,6 +9,7 @@ func _ready():
 	$BigBs/BigB3.play()
 	$BigBs/BigB4.play()
 	$"High Score".text = "High Score: " + str(Global.highscore)
+	Global.lives = 3
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
